@@ -18,19 +18,34 @@ public class Mower {
 	}
 
 	public void executeCommand(Command command) {
-		if (command.equals(Command.G))  this.orientation = orientation.turnLeft();
-		else if (command.equals(Command.D))this.orientation = orientation.turnRight();
-		else {
-			Position newPosition = null;
-			try {
-			if(orientation.equals(Orientation.N)) newPosition = Position.of(position.getX(), position.getY() + 1);
-			else if(orientation.equals(Orientation.E)) newPosition = Position.of(position.getX() + 1, position.getY());
-			else if(orientation.equals(Orientation.S)) newPosition = Position.of(position.getX() , position.getY() - 1);
-			else newPosition = Position.of(position.getX() - 1, position.getY());
-			} finally {
-				if (newPosition!=null && lawn.isWithin(newPosition)) this.position = newPosition;
-			}
-			
+		switch (command) {
+		case D -> turnRight();
+		case G -> turnLeft();
+		case A -> move();
+		}
+	}
+
+	public void turnLeft() {
+		this.orientation = this.orientation.turnLeft();
+	}
+
+	public void turnRight() {
+		this.orientation = this.orientation.turnRight();
+	}
+
+	public void move() {
+		int newX = this.position.getX();
+		int newY = this.position.getY();
+
+		switch (this.orientation) {
+		case N -> newY += 1;
+		case E -> newX += 1;
+		case S -> newY -= 1;
+		case W -> newX -= 1;
+		}
+
+		if (newX >= 0 && newY >= 0 && lawn.isWithin(Position.of(newX, newY))) {
+			this.position = Position.of(newX, newY);
 		}
 	}
 
