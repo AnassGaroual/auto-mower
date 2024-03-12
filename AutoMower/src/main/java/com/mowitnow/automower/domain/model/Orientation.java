@@ -4,11 +4,12 @@ public enum Orientation {
 	N, E, S, W;
 
 	public Orientation turnLeft() {
-		if (this.equals(N)) return Orientation.W;
-		else if (this.equals(E)) return Orientation.N;
-		else if (this.equals(S)) return Orientation.E;
-		else  return Orientation.S;
-		
+		return switch (this) {
+		case N -> W;
+		case W -> S;
+		case S -> E;
+		case E -> N;
+		};
 	}
 
 	public Orientation turnRight() {
