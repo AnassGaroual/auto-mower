@@ -32,4 +32,33 @@ class MowerTest {
 		});
 	}
 
+	@Test
+	void executeCommand_TurnRight_ShouldChangeOrientationCorrectly() {
+		Mower mower = new Mower(Position.of(1, 1), Orientation.N, lawn);
+		mower.executeCommand(Command.D);
+		assertEquals(Orientation.E, mower.getOrientation());
+	}
+
+	@Test
+	void executeCommand_TurnLeft_ShouldChangeOrientationCorrectly() {
+		Mower mower = new Mower(Position.of(1, 1), Orientation.N, lawn);
+		mower.executeCommand(Command.G);
+		assertEquals(Orientation.W, mower.getOrientation());
+	}
+
+	@ParameterizedTest
+	@CsvSource({ "N, 1, 2, 1, 3", "E, 1, 2, 2, 2", "S, 1, 2, 1, 1", "W, 1, 2, 0, 2" })
+	void executeCommand_MoveForward_ShouldChangePositionCorrectly(Orientation orientation, int startX, int startY,
+			int expectedX, int expectedY) {
+		Mower mower = new Mower(Position.of(startX, startY), orientation, lawn);
+		mower.executeCommand(Command.A);
+		assertEquals(Position.of(expectedX, expectedY), mower.getPosition());
+	}
+
+	@Test
+	void executeCommand_MoveForward_OutsideLawn_ShouldNotChangePosition() {
+		Mower mower = new Mower(Position.of(5, 5), Orientation.N, lawn);
+		mower.executeCommand(Command.A);
+		assertEquals(Position.of(5, 5), mower.getPosition());
+	}
 }
