@@ -9,8 +9,11 @@ public class Mower {
 	private final Lawn lawn;
 
 	public Mower(Position position, Orientation orientation, Lawn lawn) {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException("Not yet implemented");
+		if (!lawn.isWithin(position))
+			throw new IllegalArgumentException();
+		this.position = position;
+		this.orientation = orientation;
+		this.lawn = lawn;
 	}
 
 	public void executeCommand(Command command) {
