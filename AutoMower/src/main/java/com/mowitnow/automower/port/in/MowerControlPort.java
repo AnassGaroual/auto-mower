@@ -9,7 +9,7 @@ import com.mowitnow.automower.domain.model.Mower;
  * Interface for controlling a mower within a lawn. This port represents the
  * entry point for passing commands to a mower and getting its final state.
  */
-public interface MowerControlService {
+public interface MowerControlPort {
 	/**
 	 * Processes a list of commands for a mower positioned on a lawn and returns the
 	 * mower's final state.
