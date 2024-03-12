@@ -18,8 +18,20 @@ public class Mower {
 	}
 
 	public void executeCommand(Command command) {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException("Not yet implemented");
+		if (command.equals(Command.G))  this.orientation = orientation.turnLeft();
+		else if (command.equals(Command.D))this.orientation = orientation.turnRight();
+		else {
+			Position newPosition = null;
+			try {
+			if(orientation.equals(Orientation.N)) newPosition = Position.of(position.getX(), position.getY() + 1);
+			else if(orientation.equals(Orientation.E)) newPosition = Position.of(position.getX() + 1, position.getY());
+			else if(orientation.equals(Orientation.S)) newPosition = Position.of(position.getX() , position.getY() - 1);
+			else newPosition = Position.of(position.getX() - 1, position.getY());
+			} finally {
+				if (newPosition!=null && lawn.isWithin(newPosition)) this.position = newPosition;
+			}
+			
+		}
 	}
 
 }
