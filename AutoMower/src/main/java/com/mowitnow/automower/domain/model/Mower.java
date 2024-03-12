@@ -9,8 +9,9 @@ public class Mower {
 	private final Lawn lawn;
 
 	public Mower(Position position, Orientation orientation, Lawn lawn) {
-		if (!lawn.isWithin(position))
-			throw new IllegalArgumentException();
+		if (!lawn.isWithin(position)) {
+			throw new IllegalArgumentException("Initial position is outside the lawn boundaries");
+		}
 		this.position = position;
 		this.orientation = orientation;
 		this.lawn = lawn;
