@@ -9,23 +9,20 @@ import com.mowitnow.automower.domain.model.Orientation;
 import com.mowitnow.automower.domain.model.Position;
 import com.mowitnow.automower.port.in.MowerControlPort;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class MowerControlService implements MowerControlPort {
 
 	private final Lawn lawn;
 
-	public MowerControlService(Lawn lawn) {
-		this.lawn = lawn;
-	}
-
 	@Override
 	public Mower processMowerInstructions(int initialX, int initialY, String orientation, List<Command> commands) {
-		Position initialPosition = Position.of(initialX, initialY);
-		Orientation initialOrientation = Orientation.valueOf(orientation);
-		Mower mower = new Mower(initialPosition, initialOrientation, this.lawn);
+		var initialPosition = Position.of(initialX, initialY);
+		var initialOrientation = Orientation.valueOf(orientation);
+		var mower = new Mower(initialPosition, initialOrientation, this.lawn);
 
-		for (Command command : commands) {
-			mower.executeCommand(command);
-		}
+		commands.forEach(mower::executeCommand);
 
 		return mower;
 	}

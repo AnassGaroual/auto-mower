@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.mowitnow.automower.application.service.MowerControlService;
 import com.mowitnow.automower.domain.model.Command;
 import com.mowitnow.automower.domain.model.Lawn;
 import com.mowitnow.automower.domain.model.Mower;
