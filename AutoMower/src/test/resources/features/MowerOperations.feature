@@ -18,15 +18,15 @@ Feature: Automated Mower Operations on a Lawn
 
   Scenario: Mower ignores command to move outside the lawn boundary
     Given a mower is initially positioned at 0 0 facing S
-    When the mower executes navigation instructions "A"
+    When the mower executes navigation instructions A
     Then the mower should finish at 0 0 facing S
 
   Scenario: Mower navigates to each corner of the lawn
     Given a mower is initially positioned at 0 0 facing N
-    When the mower executes navigation instructions "AAAAAAAAADAAAAAAAAAADAAAAAAAAAADAAAAAAAAAA"
-    Then the mower should finish at 0 0 facing O
+    When the mower executes navigation instructions AAAAAAAAADAAAAAAAAAADAAAAAAAAAADAAAAAAAAAA
+    Then the mower should finish at 0 0 facing W
 
   Scenario: Complex navigation with multiple turns and moves
     Given a mower is initially positioned at 1 2 facing E
-    When the mower executes navigation instructions "DAAADAAAGAAA"
-    Then the mower should finish at a 4 3 facing N
+    When the mower executes navigation instructions DAAADAAAGAAA
+    Then the mower should finish at 0 0 facing S
