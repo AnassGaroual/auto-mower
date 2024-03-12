@@ -52,13 +52,15 @@ class MowerTest {
 			int expectedX, int expectedY) {
 		Mower mower = new Mower(Position.of(startX, startY), orientation, lawn);
 		mower.executeCommand(Command.A);
-		assertEquals(Position.of(expectedX, expectedY), mower.getPosition());
+		assertEquals(expectedX, mower.getPosition().getX());
+		assertEquals(expectedY, mower.getPosition().getY());
 	}
 
 	@Test
 	void executeCommand_MoveForward_OutsideLawn_ShouldNotChangePosition() {
 		Mower mower = new Mower(Position.of(5, 5), Orientation.N, lawn);
 		mower.executeCommand(Command.A);
-		assertEquals(Position.of(5, 5), mower.getPosition());
+		assertEquals(5, mower.getPosition().getX());
+		assertEquals(5, mower.getPosition().getY());
 	}
 }
