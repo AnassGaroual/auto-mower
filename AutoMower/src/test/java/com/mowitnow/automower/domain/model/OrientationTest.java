@@ -13,4 +13,10 @@ class OrientationTest {
 		assertEquals(expected, input.turnLeft());
 	}
 
+	@ParameterizedTest
+	@CsvSource({ "N, E", "E, S", "S, W", "W, N" })
+	void turnRight_ShouldResultInCorrectOrientation(Orientation input, Orientation expected) {
+		assertEquals(expected, input.turnRight());
+	}
+
 }
