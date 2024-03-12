@@ -9,7 +9,7 @@ public class Mower {
 	private final Lawn lawn;
 
 	public Mower(Position position, Orientation orientation, Lawn lawn) {
-		if (!lawn.isWithin(position)) {
+		if (!lawn.isPositionInside(position)) {
 			throw new IllegalArgumentException("Initial position is outside the lawn boundaries");
 		}
 		this.position = position;
@@ -44,7 +44,7 @@ public class Mower {
 		case W -> newX -= 1;
 		}
 
-		if (newX >= 0 && newY >= 0 && lawn.isWithin(Position.of(newX, newY))) {
+		if (newX >= 0 && newY >= 0 && lawn.isPositionInside(Position.of(newX, newY))) {
 			this.position = Position.of(newX, newY);
 		}
 	}

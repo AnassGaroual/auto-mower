@@ -18,24 +18,24 @@ class LawnTest {
 	@Test
 	void positionWithinLawn_ShouldReturnTrue() {
 		Position insidePosition = Position.of(1, 1);
-		assertTrue(lawn.isWithin(insidePosition));
+		assertTrue(lawn.isPositionInside(insidePosition));
 	}
 
 	@Test
 	void positionOutsideLawn_ShouldReturnFalse() {
 		Position outsidePositionX = Position.of(6, 1);
-		assertFalse(lawn.isWithin(outsidePositionX));
+		assertFalse(lawn.isPositionInside(outsidePositionX));
 
 		Position outsidePositionY = Position.of(1, 6);
-		assertFalse(lawn.isWithin(outsidePositionY));
+		assertFalse(lawn.isPositionInside(outsidePositionY));
 	}
 
 	@Test
 	void positionOnLawnBoundary_ShouldReturnTrue() {
 		Position onBoundaryPositionX = Position.of(5, 1);
-		assertTrue(lawn.isWithin(onBoundaryPositionX));
+		assertTrue(lawn.isPositionInside(onBoundaryPositionX));
 
 		Position onBoundaryPositionY = Position.of(1, 5);
-		assertTrue(lawn.isWithin(onBoundaryPositionY));
+		assertTrue(lawn.isPositionInside(onBoundaryPositionY));
 	}
 }
