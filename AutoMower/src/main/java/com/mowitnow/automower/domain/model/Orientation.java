@@ -13,7 +13,11 @@ public enum Orientation {
 	}
 
 	public Orientation turnRight() {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException("Not yet implemented");
+		return switch (this) {
+		case N -> E;
+		case E -> S;
+		case S -> W;
+		case W -> N;
+		};
 	}
 }
