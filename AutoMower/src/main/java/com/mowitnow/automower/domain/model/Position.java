@@ -10,8 +10,11 @@ public final class Position {
 	private final int y;
 
 	private Position(int x, int y) {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException("Not yet implemented");
+		if (x >= 0 && y >= 0) {
+			this.x = x;
+			this.y = y;
+		} else
+			throw new IllegalArgumentException();
 	}
 
 	public static Position of(int x, int y) {
