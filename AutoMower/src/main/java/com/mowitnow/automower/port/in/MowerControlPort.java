@@ -1,15 +1,18 @@
 package com.mowitnow.automower.port.in;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.mowitnow.automower.domain.model.Command;
 import com.mowitnow.automower.domain.model.Mower;
-
-import java.util.List;
 
 /**
  * Interface for controlling a mower within a lawn. This port represents the
  * entry point for passing commands to a mower and getting its final state,
  * including specifying the lawn on which the mower operates.
  */
+@Service
 public interface MowerControlPort {
 	/**
 	 * Processes a list of commands for a mower positioned on a specific lawn and

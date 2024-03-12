@@ -2,6 +2,8 @@ package com.mowitnow.automower.application.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.mowitnow.automower.domain.model.Command;
 import com.mowitnow.automower.domain.model.Lawn;
 import com.mowitnow.automower.domain.model.Mower;
@@ -9,6 +11,7 @@ import com.mowitnow.automower.domain.model.Orientation;
 import com.mowitnow.automower.domain.model.Position;
 import com.mowitnow.automower.port.in.MowerControlPort;
 
+@Service
 public class MowerControlService implements MowerControlPort {
 
 	@Override
